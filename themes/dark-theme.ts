@@ -1,14 +1,16 @@
 import { createTheme } from '@mui/material';
-import { red } from '@mui/material/colors';
 
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: '#d1d5db',
+    },
     secondary: {
       main: '#19874b',
     },
     error: {
-      main: red.A400,
+      main: '#ef4444',
     },
   },
 
@@ -19,8 +21,30 @@ export const darkTheme = createTheme({
       },
       styleOverrides: {
         root: {
+          boxShadow: 'none',
           background: '#292C32',
         },
+      },
+    },
+    MuiCard: {
+      defaultProps: {
+        elevation: 0,
+      },
+      styleOverrides: {
+        root: {
+          '&.entries-list-container': {
+            background: '#262626',
+          },
+
+          '&.entry-card': {
+            background: '#404040',
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      defaultProps: {
+        elevation: 0,
       },
     },
   },

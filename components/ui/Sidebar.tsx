@@ -1,13 +1,10 @@
+// react components | hooks
 import { useContext } from 'react';
-
-import { UIContext } from '../../context/ui/UIContext';
-
 // material ui
-import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import { Box, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-
-const menuItems: Array<string> = ['inbox', 'starred', 'Send email', 'Drafts'];
+import { Box, Divider, Drawer, Typography } from '@mui/material';
+// own components
+import { UIContext } from '../../context/ui/UIContext';
+import { ListItems } from './';
 
 export const Sidebar = () => {
   const { sideMenuOpen, closeSideMenu } = useContext(UIContext);
@@ -19,27 +16,11 @@ export const Sidebar = () => {
           <Typography variant="h4">Menu</Typography>
         </Box>
 
-        <List>
-          {menuItems.map((menuItem, index) => (
-            <ListItem button key={menuItem}>
-              <ListItemIcon>{index % 2 ? <InboxOutlinedIcon /> : <EmailOutlinedIcon />}</ListItemIcon>
-
-              <ListItemText primary={menuItem} />
-            </ListItem>
-          ))}
-        </List>
+        <ListItems />
 
         <Divider />
 
-        <List>
-          {menuItems.map((menuItem, index) => (
-            <ListItem button key={menuItem}>
-              <ListItemIcon>{index % 2 ? <InboxOutlinedIcon /> : <EmailOutlinedIcon />}</ListItemIcon>
-
-              <ListItemText primary={menuItem} />
-            </ListItem>
-          ))}
-        </List>
+        <ListItems />
       </Box>
     </Drawer>
   );

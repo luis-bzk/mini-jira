@@ -1,20 +1,19 @@
 import { createTheme } from '@mui/material';
-import { grey, red } from '@mui/material/colors';
 
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     background: {
-      default: grey[200],
+      default: '#e7e5e4',
     },
     primary: {
-      main: '#4a148c',
+      main: '#4E89FF',
     },
     secondary: {
       main: '#19874b',
     },
     error: {
-      main: red.A400,
+      main: '#ef4444',
     },
   },
 
@@ -25,9 +24,29 @@ export const lightTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          background: '#4E89FF',
           boxShadow: 'none',
         },
+      },
+    },
+    MuiCard: {
+      defaultProps: {
+        elevation: 0,
+      },
+      styleOverrides: {
+        root: {
+          '&.entries-list-container': {
+            background: '#f9fafb',
+          },
+
+          '&.entry-card': {
+            background: '#e2e8f0',
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      defaultProps: {
+        elevation: 0,
       },
     },
   },
