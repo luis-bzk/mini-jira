@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { db } from '../../../database';
 import { Entry, IEntry } from '../../../models';
-import { disconnect } from '../../../database/db';
 
 type Data = { message: string } | Array<IEntry> | IEntry;
 
