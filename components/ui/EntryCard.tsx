@@ -1,18 +1,22 @@
 import { FC, DragEvent, useContext } from 'react';
+import { useRouter } from 'next/router';
 
 import { Card, CardActionArea, CardActions, CardContent, Typography } from '@mui/material';
 
 import { Entry } from '../../interfaces';
 
 import { UIContext } from '../../context/ui';
-import TouchRipple from '@mui/material/ButtonBase/TouchRipple';
+
+import { dateFunctions } from '../../utils';
 
 interface Props {
   entry: Entry;
 }
 
 export const EntryCard: FC<Props> = ({ entry }) => {
-  const { startDragging, endDragging, isDragging } = useContext(UIContext);
+  const { startDragging, endDragging } = useContext(UIContext);
+
+  const router = useRouter();
 
   const onDragStart = (event: DragEvent<HTMLDivElement>) => {
     event.dataTransfer.setData('id', entry._id);
@@ -22,6 +26,10 @@ export const EntryCard: FC<Props> = ({ entry }) => {
 
   const onDragEnd = () => {
     endDragging();
+  };
+
+  const onClick = () => {
+    router.push(`/entries/${entry._id}`);
   };
 
   return (
@@ -34,6 +42,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
       draggable
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
+      onClick={onClick}
     >
       <CardActionArea disableRipple>
         <CardContent>
@@ -41,7 +50,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
         </CardContent>
 
         <CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}>
-          <Typography variant='body2'>created 5 minutes ago...</Typography>
+          <Typography variant='body2'>{dateFunctions.getFormatDistanceToNow(entry.createdAt)}</Typography>
         </CardActions>
       </CardActionArea>
     </Card>

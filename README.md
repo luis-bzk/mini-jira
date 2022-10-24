@@ -18,6 +18,8 @@ mongodb://localhost:27017/minijiradb
 
 rename the file __.env.template__ to __.env__
 
+* Rebuild node_modules with ```yarn install```, next lift NextJS with ```yarn dev```
+
 ## Fill the database with test information
 
 Call URL:

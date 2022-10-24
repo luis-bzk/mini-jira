@@ -47,5 +47,19 @@ export const darkTheme = createTheme({
         elevation: 0,
       },
     },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&.delete-button': {
+            background: '#C62B2B',
+            color: 'white',
+            ':hover': {
+              background: '#AA1A1A',
+              // color: 'white',
+            },
+          },
+        },
+      },
+    },
   },
 });

@@ -9,7 +9,7 @@ import { Navbar, Sidebar } from '../ui';
 
 interface Props {
   title?: string;
-  children: JSX.Element;
+  children: JSX.Element | Array<JSX.Element>;
 }
 
 export const Layout: FC<Props> = ({ title, children }) => {
@@ -20,7 +20,7 @@ export const Layout: FC<Props> = ({ title, children }) => {
       </Head>
 
       <Navbar />
-      <Sidebar/>
+      <Sidebar />
 
       <Box sx={{ padding: '10px 20px' }}>{children}</Box>
     </Box>
